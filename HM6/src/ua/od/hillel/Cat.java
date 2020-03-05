@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class Cat implements Animal,Home,GiveInfo{
+public class Cat implements Animal,Home,GiveInfo,GiveVoice{
     private int id;
     private int age;
     private int weight;
@@ -48,5 +48,11 @@ public class Cat implements Animal,Home,GiveInfo{
         getAge();
         getColor();
         getVaccinated();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("Meow");
     }
 }

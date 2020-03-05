@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class Dog implements Animal,Home,GiveInfo {
+public class Dog implements Animal,Home,GiveInfo,GiveVoice {
 
     @Override
     public void getId() {
@@ -41,6 +41,12 @@ public class Dog implements Animal,Home,GiveInfo {
         getAge();
         getColor();
         getVaccinated();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("Woof");
     }
 }
 

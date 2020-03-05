@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class Crocodile implements Animal,Wild,GiveInfo {
+public class Crocodile implements Animal,Wild,GiveInfo,GiveVoice {
     private int id;
     private int age;
     private int weight;
@@ -43,5 +43,11 @@ public class Crocodile implements Animal,Wild,GiveInfo {
         getAge();
         getColor();
         getPredator();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("I am a wild animal");
     }
 }

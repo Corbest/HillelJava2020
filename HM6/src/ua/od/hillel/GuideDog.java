@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class GuideDog implements Animal,Home,GiveInfo,Trained {
+public class GuideDog implements Animal,Home,GiveInfo,Trained,GiveVoice {
     private int id;
     private int age;
     private int weight;
@@ -54,5 +54,11 @@ public class GuideDog implements Animal,Home,GiveInfo,Trained {
         getAge();
         getColor();
         getVaccinated();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("Я со6ака поводырь");
     }
 }

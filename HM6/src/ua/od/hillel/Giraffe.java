@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class Giraffe implements Animal,GiveInfo{
+public class Giraffe implements Animal,GiveInfo,GiveVoice{
     private int id;
     private int age;
     private int weight;
@@ -35,5 +35,11 @@ public class Giraffe implements Animal,GiveInfo{
         getWeight();
         getAge();
         getColor();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("Hello");
     }
 }

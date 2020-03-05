@@ -1,6 +1,6 @@
 package ua.od.hillel;
 
-public class Fish implements Animal,GiveInfo{
+public class Fish implements Animal,GiveInfo,GiveVoice{
     private int id;
     private int age;
     private int weight;
@@ -36,5 +36,11 @@ public class Fish implements Animal,GiveInfo{
         getWeight();
         getAge();
         getColor();
+        Say();
+    }
+
+    @Override
+    public void Say() {
+        System.out.println("...");
     }
 }

@@ -18,7 +18,7 @@ public class Main {
         collect.contains(4);
         collect.equals();
 //        collect.clear();
-        collect.findOrIndexOf();
+        collect.findOrIndexOf("");
         System.out.println(collect.getSize());
     }
 }

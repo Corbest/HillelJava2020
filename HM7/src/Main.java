@@ -15,7 +15,7 @@ public class Main {
         System.out.println(collect.getSize());
         collect.delete(4);
         collect.getIndex(2);
-        collect.indexOf("Проверка");
+        System.out.println(collect.indexOf("Проверка"));
         collect.contains("");
         collect.equals();
 //        collect.clear();

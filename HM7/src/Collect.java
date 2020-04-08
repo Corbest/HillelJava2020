@@ -43,8 +43,14 @@ public class Collect {
   size = 0;
  }
 
- public void indexOf(String find) {
-
+ public int indexOf(String find) {
+  int result  = -1;
+  for (int i = 0; i < mass.length; i++) {
+   if (find.equalsIgnoreCase(mass[i])) {
+    result = i; break;
+   }
+  }
+  return result;
  }
 
     public int getSize () {

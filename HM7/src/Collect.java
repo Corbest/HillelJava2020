@@ -28,8 +28,15 @@ public class Collect {
    System.out.println("ячейка пустая");
  }
 
- public void contains(String get) {
-
+ public boolean contains(String get) {
+   boolean result = false;
+  for (String value : mass) {
+   if (get.equalsIgnoreCase(value)) {
+    result = true;
+    break;
+   }
+  }
+  return result;
  }
 
  public void equals() {

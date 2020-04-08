@@ -15,10 +15,10 @@ public class Main {
         System.out.println(collect.getSize());
         collect.delete(4);
         collect.getIndex(2);
-        collect.contains(4);
+        collect.indexOf("Проверка");
+        collect.contains("");
         collect.equals();
 //        collect.clear();
-        collect.findOrIndexOf("");
         System.out.println(collect.getSize());
     }
 }

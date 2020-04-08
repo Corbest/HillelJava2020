@@ -4,12 +4,15 @@ public class Collect {
  int size = 0;
 
  public void add(String set) {
-  mass[size] = set;
-  size++;
+  if (size < mass.length) {
+   mass[size] = set;
+   size++;
+  }
+  else System.out.println("Мест нет");
  }
 
  public void delete(int del) {
-  if (del < 10) {
+  if (del < size) {
    this.mass[del] = null;
    size--;
   } else System.out.println("Такого индекса нету");
@@ -17,7 +20,7 @@ public class Collect {
  }
 
  public void getIndex(int get) {
-  if (get < 10) {
+  if (get < size) {
    System.out.println(mass[get]);
   } else System.out.println("Такого индекса нету.");
 
@@ -25,7 +28,7 @@ public class Collect {
    System.out.println("ячейка пустая");
  }
 
- public void contains(int get) {
+ public void contains(String get) {
 
  }
 
@@ -40,7 +43,7 @@ public class Collect {
   size = 0;
  }
 
- public void findOrIndexOf(String find) {
+ public void indexOf(String find) {
 
  }
 

@@ -1,27 +1,38 @@
-public class Collect {
+import java.util.Arrays;
 
- private String[] mass = new String[10];
+public class Collect {
+ int sizeInMass = 10;
+ private String[] mass = new String[sizeInMass];
+ private String[] tempMass;
  int size = 0;
 
  public void add(String set) {
+  if (size == mass.length) {
+   sizeInMass = mass.length;
+   tempMass = new String[sizeInMass];
+   System.arraycopy(mass,0,tempMass,0,mass.length);
+   mass = new String[(mass.length * 3) /2 + 1];
+   System.arraycopy(tempMass,0,mass,0,size);
+  }
   if (size < mass.length) {
    mass[size] = set;
    size++;
   }
-  else System.out.println("Мест нет");
  }
 
  public void delete(int del) {
-  if (del < size) {
-   this.mass[del] = null;
-   size--;
-  } else System.out.println("Такого индекса нету");
-
- }
+  if (del<0){
+   throw new IndexOutOfBoundsException("Index out of bounds");
+  }
+   int forward = mass.length - del -1;
+   System.arraycopy(mass,del + 1,mass, del,forward);
+   mass[--size] = null;
+  }
 
  public void getIndex(int get) {
   if (get < size) {
-   System.out.println(mass[get]);
+   System.out.println("Элемент по данному индексу: " + mass[get]);
+
   } else System.out.println("Такого индекса нету.");
 
   if (mass[get] == null)
@@ -39,8 +50,9 @@ public class Collect {
   return result;
  }
 
- public void equals() {
-
+ public boolean equals(Collect collections) {
+  
+  return true;
  }
 
  public void clear() {
@@ -48,19 +60,23 @@ public class Collect {
    mass[i] = null;
   }
   size = 0;
+  System.out.println("Массив очищен");
  }
 
- public int indexOf(String find) {
+ public void indexOf(String find) {
   int result  = -1;
   for (int i = 0; i < mass.length; i++) {
    if (find.equalsIgnoreCase(mass[i])) {
     result = i; break;
    }
   }
-  return result;
+  System.out.println("Индекс элемента: "+result);
  }
 
-    public int getSize () {
-     return size;
+    public void  getSize () {
+     System.out.println("Размер массива: " + size);
+    }
+   public void check() {
+     System.out.println(Arrays.toString(mass));
     }
 }

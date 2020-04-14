@@ -4,7 +4,7 @@ public class Collect {
  int sizeInMass = 10;
  private String[] mass = new String[sizeInMass];
  private String[] tempMass;
- int size = 0;
+ int size;
 
  public void add(String set) {
   if (size == mass.length) {
@@ -40,19 +40,19 @@ public class Collect {
  }
 
  public boolean contains(String get) {
-   boolean result = false;
   for (String value : mass) {
    if (get.equalsIgnoreCase(value)) {
-    result = true;
-    break;
+    return true;
    }
   }
-  return result;
+  return false;
  }
 
  public boolean equals(Collect collections) {
-  
-  return true;
+   if (collections.getSize() == getSize()) {
+//    if (this.getSize() == collections.getSize()) {
+    return true;
+   }return false;
  }
 
  public void clear() {
@@ -73,8 +73,8 @@ public class Collect {
   System.out.println("Индекс элемента: "+result);
  }
 
-    public void  getSize () {
-     System.out.println("Размер массива: " + size);
+    public int getSize () {
+     return size;
     }
    public void check() {
      System.out.println(Arrays.toString(mass));

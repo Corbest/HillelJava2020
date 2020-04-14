@@ -3,8 +3,9 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         Collect collect = new Collect();
-        collect.getSize();
+        Collect collect1 = new Collect();
         collect.check();
+        System.out.println("Количество элементов: "+collect.getSize());
         System.out.println("===========================");
         collect.add("1");
         collect.add("2");
@@ -24,7 +25,7 @@ public class Main {
         collect.add("тест16");
         collect.check();
         System.out.println("===========================");
-        collect.getSize();
+        System.out.println("Количество элементов: "+collect.getSize());
         collect.delete(4);
         System.out.println("===========================");
         collect.getIndex(10);
@@ -32,10 +33,12 @@ public class Main {
         collect.indexOf("Проверка");
         System.out.println("===========================");
         System.out.println(collect.contains("100"));
+        System.out.println("===========================");
         System.out.println(collect.equals(collect));
 //        collect.clear();
         System.out.println("===========================");
         collect.check();
-        collect.getSize();
+        System.out.println("Количество элементов: "+collect.getSize());
+        System.out.println(collect1.equals(collect));
     }
 }

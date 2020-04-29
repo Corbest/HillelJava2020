@@ -1,5 +1,3 @@
-import java.util.Collection;
-import java.util.LinkedList;
 
 public interface CustomCollection {
     boolean add(String str);
@@ -18,7 +16,7 @@ public interface CustomCollection {
 
     boolean clear();
 
-    int size();
+    int getSize();
 
     boolean trim();
 

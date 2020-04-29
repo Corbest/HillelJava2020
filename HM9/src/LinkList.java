@@ -1,7 +1,3 @@
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-
 public class LinkList implements CustomCollection {
     private Link first;
     private Link last;
@@ -21,7 +17,8 @@ public class LinkList implements CustomCollection {
         while (current != null) {
             current.displayLink();
             current = current.next;
-        }return true;
+        }
+        return true;
     }
 
     public boolean add(String str) {
@@ -56,14 +53,16 @@ public class LinkList implements CustomCollection {
                 newLink.prev = current;
                 current.next = newLink;
             }
+            size++;
         }
         return true;
     }
 
     @Override
     public boolean addAll(LinkList strColl) {
-        for (int i = 0; i < strColl.size(); i++) {
+        for (int i = 0; i < strColl.getSize(); i++) {
             String value = strColl.get(i);
+
             Link newLink = new Link(value);
             if (isEmpty()) {
                 last = newLink;
@@ -76,6 +75,7 @@ public class LinkList implements CustomCollection {
                 newLink.prev = current;
                 current.next = newLink;
             }
+            size++;
         }
         return true;
     }
@@ -125,7 +125,7 @@ public class LinkList implements CustomCollection {
     @Override
     public String get(int index) {
         Link current = first;
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             if (current.next == null)
                 return null;
             else current = current.next;
@@ -152,22 +152,22 @@ public class LinkList implements CustomCollection {
                 first = null;
             else
                 last.prev.next = null;
-                last = last.prev;
-            }
+            last = last.prev;
+        }
         return true;
     }
     @Override
-    public int size() {
-        return this.size;
+    public int getSize() {
+        return size;
     }
 
     @Override
     public boolean trim() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean compare(LinkList coll) {
-        return false;
+        return coll.getSize() == getSize();
     }
 }

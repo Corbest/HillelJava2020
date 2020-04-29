@@ -6,7 +6,7 @@ public class Collect {
  private String[] tempMass;
  int size;
 
- public void add(String set) {
+ public boolean add(String set) {
   if (size == mass.length) {
    sizeInMass = mass.length;
    tempMass = new String[sizeInMass];
@@ -17,19 +17,20 @@ public class Collect {
   if (size < mass.length) {
    mass[size] = set;
    size++;
-  }
+  }return true;
  }
 
- public void delete(int del) {
+ public boolean delete(int del) {
   if (del<0){
    throw new IndexOutOfBoundsException("Index out of bounds");
   }
    int forward = mass.length - del -1;
    System.arraycopy(mass,del + 1,mass, del,forward);
    mass[--size] = null;
+   return true;
   }
 
- public void getIndex(int get) {
+ public boolean getIndex(int get) {
   if (get < size) {
    System.out.println("Элемент по данному индексу: " + mass[get]);
 
@@ -37,6 +38,7 @@ public class Collect {
 
   if (mass[get] == null)
    System.out.println("ячейка пустая");
+  return true;
  }
 
  public boolean contains(String get) {
@@ -63,7 +65,7 @@ public class Collect {
   System.out.println("Массив очищен");
  }
 
- public void indexOf(String find) {
+ public boolean indexOf(String find) {
   int result  = -1;
   for (int i = 0; i < mass.length; i++) {
    if (find.equalsIgnoreCase(mass[i])) {
@@ -71,6 +73,7 @@ public class Collect {
    }
   }
   System.out.println("Индекс элемента: "+result);
+  return true;
  }
 
     public int getSize () {

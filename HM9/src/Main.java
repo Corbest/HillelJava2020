@@ -19,6 +19,7 @@ public class Main {
         System.out.println(linkList.get(4));
         System.out.println(linkList.compare(test));
 //        linkList.clear();
+        System.out.println(linkList.contains("Проверка"));
         linkList.delete(2);
         linkList.delete("4");
         linkList.displayList();

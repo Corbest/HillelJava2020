@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HM10/HM10.iml" filepath="$PROJECT_DIR$/HM10/HM10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HM6/HM6.iml" filepath="$PROJECT_DIR$/HM6/HM6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HM7/HM7.iml" filepath="$PROJECT_DIR$/HM7/HM7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HM9/HM9.iml" filepath="$PROJECT_DIR$/HM9/HM9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaHillel2020.iml" filepath="$PROJECT_DIR$/JavaHillel2020.iml" />
+    </modules>
+  </component>
+</project>

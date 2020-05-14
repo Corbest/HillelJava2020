@@ -20,7 +20,7 @@ public class Main {
         set.add("1");
         set.add("2");
         set.add("3");
-
+        System.out.println("Проверка");
         System.out.println(Duplicates.removeDuplicates(set));
 
 

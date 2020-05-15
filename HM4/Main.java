@@ -1,4 +1,4 @@
-package ua.od.hillel;
+package HM4;
 import java.util.Scanner;
 
 public class Main {

@@ -1,3 +1,5 @@
+package HM11;
+
 import java.util.Arrays;
 
 public class Collect {
@@ -67,7 +69,6 @@ public class Collect {
   }
   return result;
  }
-
     public int getSize () {
      return size;
     }

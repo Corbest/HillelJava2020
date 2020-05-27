@@ -1,10 +1,5 @@
 package HM17;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
 public class Bank {
     public int fullness = 0;
     public int max_size = 1000;

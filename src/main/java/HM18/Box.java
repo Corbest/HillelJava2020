@@ -8,7 +8,7 @@ public class Box {
     public int check() {
         return fullness;
     }
-    public void inPutInBox(int value) {
+    public void setInBox(int value) {
         this.fullness += value;
     }
 }

@@ -1,6 +1,6 @@
 package HM18;
 
-public class InPutUser implements Runnable {
+public class  InPutUser implements Runnable {
     private Box box;
     public String name = "Fred";
 
@@ -12,12 +12,13 @@ public class InPutUser implements Runnable {
     }
 
     @Override
-    public void run() {
-        while (box.fullness < box.MAX_FULLNESS) {
-            int set = inPutInBox();
+    public synchronized void run() {
+        if (box.isEmpty())
+            while (box.check() != box.MAX_FULLNESS) {
+                int set = inPutInBox();
+                System.out.println(name + ": " + box.check());
+                box.setInBox(set);
+            }
             System.out.println(name + ": " + box.check());
-            box.setInBox(set);
         }
-        System.out.println(name + ": " + box.check());
     }
-}

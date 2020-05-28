@@ -1,21 +1,21 @@
 package HM18;
 
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import static java.lang.Thread.*;
 
 public class OS {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Box box = new Box();
         InPutUser inPutUser = new InPutUser();
         inPutUser.setBox(box);
         OutPutUser outPutUser= new OutPutUser();
         outPutUser.setBox(box);
-//        ExecutorService executorService = Executors.newFixedThreadPool(2);
-//        executorService.submit(inPutUser);
-//        executorService.submit(outPutUser);
-        inPutUser.run();
-        outPutUser.run();
+        Thread one = new Thread(inPutUser);
+        Thread two = new Thread(outPutUser);
+        one.setPriority(MAX_PRIORITY);
+        two.setPriority(MIN_PRIORITY);
+        one.start();
+        two.start();
 
 
 //            while (box.fullness < box.MAX_FULLNESS) {

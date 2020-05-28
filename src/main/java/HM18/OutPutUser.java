@@ -11,8 +11,9 @@ public class OutPutUser implements Runnable{
         this.box = box;
     }
     @Override
-    public void run() {
-        while (box.fullness > box.MIN_FULLNESS) {
+    public synchronized void run() {
+        if (box.isFull())
+        while (box.check() != box.MIN_FULLNESS) {
             int set = outPutInBox();
             System.out.println(name + ": " + box.check());
             box.setInBox(set);

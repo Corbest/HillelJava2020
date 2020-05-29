@@ -32,4 +32,7 @@ public class Bank {
         System.out.println(bank.inPutForBank(10));
         System.out.println(bank.check());
     }
+//    public void setInBox(int value) {
+//        fullness += value;
+//    }
 }

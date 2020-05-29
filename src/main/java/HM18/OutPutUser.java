@@ -1,24 +1,54 @@
 package HM18;
 
-public class OutPutUser implements Runnable{
-    private Box box;
-    public String name = "Jam";
+import java.util.ArrayList;
+import java.util.List;
+import static java.lang.Thread.sleep;
 
-    public int outPutInBox() {
-        return -100;
-    }
-    public void setBox(Box box){
-        this.box = box;
-    }
+public class OutPutUser implements Runnable{
+    public String name = "Jam";
+    static List<Integer> outPutList = new ArrayList<>(10);
+    public static int timeOutPutUser = 3000;
+
     @Override
-    public synchronized void run() {
-        if (box.isFull())
-        while (box.check() != box.MIN_FULLNESS) {
-            int set = outPutInBox();
-            System.out.println(name + ": " + box.check());
-            box.setInBox(set);
+    public void run() {
+        while(!Box.isEmpty()){
+            try {
+                sleep(timeOutPutUser);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int current = 0;
+            outPutList.add(Box.fullness[current]);
+            Box.fullness[current] = null;
+            Box.trim();
+
+
+
+            Box.trim();
+            System.out.print(""+getNameOfUser()+" - ");
+            Box.checkBox();
+            System.out.println("Out put List " +outPutList);
+            Box.setCurrent(Box.getCurrent()-1);
+            Box.trim();
+
         }
-        System.out.println(name + ": " + box.check());
+        if(Box.isEmpty()){
+            System.out.println("Box is Empty");
+            System.out.print("" + getNameOfUser() + " - ");
+            Box.checkBox();
+            OutPutUser.timeOutPutUser = 1000;
+            timeOutPutUser = 3000;
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Box.trim();
+            run();
+        }
+    }
+    public String getNameOfUser() {
+        return name;
     }
 }
 

@@ -1,52 +1,88 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-create table `hillel2020`.`Students`
-(
-    Student_ID int             not null
-    auto_increment    primary key,
-    Full_Name  varchar(255)   not null,
-    Group_ID    int  not null,
-    HowJoin    year            not null,
-    foreign key (Group_ID) references `Students`.`team`(Group_ID)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+CREATE SCHEMA IF NOT EXISTS `Student` DEFAULT CHARACTER SET utf8 ;
+USE `Student` ;
 
-create table `Students`.team
-(
-    Group_ID int not null
-        auto_increment primary key,
-    InGroup    enum ('Elementary') not null
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+CREATE TABLE IF NOT EXISTS `Student`.`Group` (
+                                                 `Group_ID` INT NOT NULL AUTO_INCREMENT,
+                                                 `Group` VARCHAR(20) NOT NULL,
+                                                 PRIMARY KEY (`Group_ID`))
+    ENGINE = InnoDB;
 
-create table`Students`.assessment
-(
- Assessment_ID bigint not null auto_increment primary key,
- Lesson_ID int not null,
- Student_ID int not null,
- foreign key (Lesson_ID) references`assessment`.lessons(Lesson_ID),
- foreign key (Student_ID) references students(Student_ID)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+CREATE TABLE IF NOT EXISTS `Student`.`Student` (
+                                                   `Student_ID` INT NOT NULL AUTO_INCREMENT,
+                                                   `Full_Name` VARCHAR(20) NOT NULL,
+                                                   `HowJoin` YEAR NOT NULL,
+                                                   `Group_ID` INT NOT NULL,
+                                                   PRIMARY KEY (`Student_ID`),
+                                                   INDEX `Group_idx` (`Group_ID` ASC) VISIBLE,
+                                                   CONSTRAINT `Group`
+                                                       FOREIGN KEY (`Group_ID`)
+                                                           REFERENCES `Student`.`Group` (`Group_ID`)
+                                                           ON DELETE CASCADE
+                                                           ON UPDATE CASCADE)
+    ENGINE = InnoDB;
 
-create table `assessment`.lessons
-(
-    Lesson_ID int not null auto_increment primary key ,
-    Name_of_lesson enum ('Mathematics','
-Programming','Work') not null ,
-    Teacher_ID int not null,
-    Semester int not null,
-    Year year,
-    foreign key (Teacher_ID) references`lessons`.teachers(Teacher_ID)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+CREATE TABLE IF NOT EXISTS `Student`.`Department` (
+                                                      `Department_ID` INT NOT NULL AUTO_INCREMENT,
+                                                      `Name_of_department` VARCHAR(20) NOT NULL,
+                                                      `head_of` VARCHAR(20) NOT NULL,
+                                                      PRIMARY KEY (`Department_ID`))
+    ENGINE = InnoDB;
 
-create table`lessons`.`teachers`
-(
-    Teacher_ID int not null auto_increment primary key,
-    Name_of_teacher varchar(255) not null ,
-    Department_ID int not null,
-    foreign key (Department_ID) references`teachers`.Department(Department_ID)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+CREATE TABLE IF NOT EXISTS `Student`.`teachers` (
+                                                    `Teachers_ID` INT NOT NULL AUTO_INCREMENT,
+                                                    `Name_of_teacher` VARCHAR(20) NOT NULL,
+                                                    `Department_ID` INT NOT NULL,
+                                                    PRIMARY KEY (`Teachers_ID`),
+                                                    INDEX `department_idx` (`Department_ID` ASC) VISIBLE,
+                                                    CONSTRAINT `department`
+                                                        FOREIGN KEY (`Department_ID`)
+                                                            REFERENCES `Student`.`Department` (`Department_ID`)
+                                                            ON DELETE CASCADE
+                                                            ON UPDATE CASCADE)
+    ENGINE = InnoDB;
 
-create table`teachers`.Department
-(
-    Department_ID int not null auto_increment primary key,
-    Name_of_department enum ('Mathematics','Programming','Work'),
-    head_of varchar(255) not null
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+CREATE TABLE IF NOT EXISTS `Student`.`lessons` (
+                                                   `Lessons_ID` INT NOT NULL AUTO_INCREMENT,
+                                                   `Name_of_lesson` VARCHAR(20) NOT NULL,
+                                                   `Teacher_ID` INT NOT NULL,
+                                                   `Semester` INT NOT NULL,
+                                                   `Year` YEAR NOT NULL,
+                                                   PRIMARY KEY (`Lessons_ID`),
+                                                   INDEX `teacher_idx` (`Teacher_ID` ASC) VISIBLE,
+                                                   CONSTRAINT `teacher`
+                                                       FOREIGN KEY (`Teacher_ID`)
+                                                           REFERENCES `Student`.`teachers` (`Teachers_ID`)
+                                                           ON DELETE CASCADE
+                                                           ON UPDATE CASCADE)
+    ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `Student`.`assessment` (
+                                                      `Assessment_ID` INT NOT NULL AUTO_INCREMENT,
+                                                      `Lesson_ID` INT NOT NULL,
+                                                      `Student_ID` INT NOT NULL,
+                                                      `Point_ID` INT NOT NULL,
+                                                      PRIMARY KEY (`Assessment_ID`),
+                                                      INDEX `Stud_idx` (`Student_ID` ASC) VISIBLE,
+                                                      INDEX `lesson_idx` (`Lesson_ID` ASC) VISIBLE,
+                                                      CONSTRAINT `Stud`
+                                                          FOREIGN KEY (`Student_ID`)
+                                                              REFERENCES `Student`.`Student` (`Student_ID`)
+                                                              ON DELETE CASCADE
+                                                              ON UPDATE CASCADE,
+                                                      CONSTRAINT `lesson`
+                                                          FOREIGN KEY (`Lesson_ID`)
+                                                              REFERENCES `Student`.`lessons` (`Lessons_ID`)
+                                                              ON DELETE CASCADE
+                                                              ON UPDATE CASCADE)
+    ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

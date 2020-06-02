@@ -14,6 +14,7 @@ public class Main {
         ResultSet rs = statement.executeQuery("select * from student.student");
         System.out.println(rs.getMetaData().getColumnName(1));
         connection.close();
+        System.out.println();
     }
 }
 

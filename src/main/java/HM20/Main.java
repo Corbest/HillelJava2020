@@ -7,44 +7,52 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/student?"
+                .getConnection("jdbc:mysql://localhost:3306/Hillel2020?"
                         + "useSSL=false&user=root&password=0481Ruslan");
 
-                Statement statement = connection.createStatement();
-
-                //Все втуденты
-//        ResultSet rs = statement.executeQuery("SELECT * FROM `student`;");
-//        while (rs.next()) {
-//            System.out.println("Id: "+rs.getInt(1));
-//            System.out.println("Name: "+rs.getString(2));
-//            System.out.println("Year: "+rs.getInt(3));
-//            System.out.println("Group Id: "+rs.getInt(4));
-//            System.out.println("====================");
-//        }
+        infoForAllStudents(connection);
 
 
-        //Все студенты учащиеся в одной группе
-//        ResultSet rs2 = statement.executeQuery("SELECT * FROM `student` where Group_ID = 1 ");
-//        while (rs2.next()) {
-//            System.out.println("Id: "+rs2.getInt(1));
-//            System.out.println("Name: "+rs2.getString(2));
-//            System.out.println("Year: "+rs2.getInt(3));
-//            System.out.println("Group Id: "+rs2.getInt(4));
-//            System.out.println("====================");
-//        }
+//        connection.close();
+    }
 
-        //Все студенты одного года поступления
-        ResultSet rs3 = statement.executeQuery("SELECT * FROM `student` where HowJoin = 2019");
-        while (rs3.next()) {
-            System.out.println("Id: "+rs3.getInt(1));
-            System.out.println("Name: "+rs3.getString(2));
-            System.out.println("Year: "+rs3.getInt(3));
-            System.out.println("Group Id: "+rs3.getInt(4));
+    public static void isWhile(ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            System.out.println("Id: " + rs.getInt(1));
+            System.out.println("Name: " + rs.getString(2));
+            System.out.println("Year: " + rs.getInt(3));
+            System.out.println("Group Id: " + rs.getInt(4));
             System.out.println("====================");
         }
-        connection.close();
     }
+
+    public static void infoForAllStudents(Connection set) throws SQLException {
+
+        Statement statement = set.createStatement();
+        
+        ResultSet rs = statement.executeQuery("SELECT * FROM `students`;");
+
+        isWhile(rs);
+
+    }
+    public static void infoForStudentGroup(String idGroup, Connection set) throws SQLException {
+        Statement statement = set.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM `students` where Group_ID = idGroup");
+
+        isWhile(rs);
+
+    }
+    public static void infoForYearStudent(String isYear,Connection set) throws SQLException {
+        Statement statement = set.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM `students` where HowJoin = isYear");
+
+        isWhile(rs);
+    }
+        public static void infoForStudentTeacherPointLessons() {
+
+        }
 }
+
 
 
 

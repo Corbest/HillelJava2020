@@ -44,7 +44,7 @@ public class Main {
     }
     public static void infoForYearStudent(String isYear,Connection set) throws SQLException {
         Statement statement = set.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT * FROM `students` where HowJoin = isYear");
+        ResultSet rs = statement.executeQuery("SELECT * FROM `students` where HowToJoin = isYear");
 
         isWhile(rs);
     }

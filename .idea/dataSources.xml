@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="HillelBD" uuid="1ab81f9e-eb8e-4135-b508-78b312b0b50f">
+    <data-source source="LOCAL" name="MyFirstDB" uuid="6c08b6c0-66f4-445c-9cca-a01ee9a487de">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/Hillel2020</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/hillel2020</jdbc-url>
     </data-source>
   </component>
 </project>

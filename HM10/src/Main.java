@@ -24,12 +24,5 @@ public class Main {
         System.out.println(Duplicates.removeDuplicates(set));
 
 
-//        Iterator<String> iterator = set.iterator(); // Вариант готовых методов котоыре есть в Java для себя.
-//        while (iterator.hasNext()){
-//            System.out.println(iterator.next());
-
-//        for (String s:set) {
-//            System.out.println(s);
         }
     }
-//}
